@@ -1,24 +1,25 @@
 # Proof of Concept - Sentiment-Based News Aggregator
 
-## Idea Reference
-- Number: 3
-- Title: Sentiment-Based News Aggregator
-- Description: Filters global news by "positive," "negative," or "neutral" tones.
+## Scope
+- App category: Logistics & Operations
+- Entity model: Sentiment Based Operation
+- Deployable stack: Flask + SQLAlchemy + Gunicorn + Docker + CI
 
-## PoC Scope
-- App boots with Flask + SQLite persistence
-- CRUD flow works via web UI (`/`, `/items/new`, `/items/<id>/edit`)
-- API endpoints return valid JSON (`/api/health`, `/api/items`)
-- Deployability assets included (`Dockerfile`, `docker-compose.yml`, `Procfile`)
+## Dynamic Field Configuration
+- Location: `location` (text)
+- Capacity: `capacity` (number)
+- Execution Notes: `execution_notes` (textarea)
 
-## Run Evidence (to capture)
+## Run Evidence Commands
 ```bash
 python app.py
 curl http://localhost:5000/api/health
-curl -X POST http://localhost:5000/api/items -H "Content-Type: application/json" -d '{"title": "Demo item", "details": "Created from PoC command", "status": "active"}'
-curl http://localhost:5000/api/items
+curl http://localhost:5000/api/schema
+curl -X POST http://localhost:5000/api/records   -H "Content-Type: application/json"   -d '{"title":"Demo Record","status":"active","payload":{"location":"Demo value","capacity":12,"execution_notes":"seed note"}}'
+curl http://localhost:5000/api/metrics
 ```
 
 ## Metadata
-- Generated UTC: 2026-03-24T15:35:11.351365+00:00
-- Status: Deployable full-template scaffold complete
+- Idea number: 77
+- Generated UTC: 2026-03-24T15:52:22.346216+00:00
+- Status: Phase-2 complete
